@@ -12,13 +12,17 @@ function Resume({ generalInfo, education }) {
       <div className="w-full px-7 flex flex-col gap-2">
         <div className="text-xl">Education</div>
         <div className="h-1 w-full border-b"></div>
-        <div>
-          <div className="text-lg font-bold">{education.school}</div>
-          <div className="flex justify-between">
-            <div>{education.title}</div>
-            <div>{education.date}</div>
-          </div>
-        </div>
+        {education.map((item) => {
+          return (
+            <div key={item.id}>
+              <div className="text-lg font-bold">{item.school}</div>
+              <div className="flex justify-between">
+                <div>{item.title}</div>
+                <div>{item.date}</div>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

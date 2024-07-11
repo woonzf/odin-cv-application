@@ -9,13 +9,13 @@ function FormSection({ title, data, onChange }) {
   return (
     <div className="form-section">
       <button
-        className="flex justify-between"
+        className="btn-expand"
         onClick={() => {
           setIsOpen(+!isOpen);
         }}
       >
         <div className="form-title">{title}</div>
-        <span className="h-full aspect-square">{isOpen === 0 ? "+" : "-"}</span>
+        <span className="expand">{isOpen === 0 ? "+" : "-"}</span>
       </button>
       {isOpen === 1 && title === "General Information" && (
         <FormGeneralInfo generalInfo={data} onChange={onChange} />

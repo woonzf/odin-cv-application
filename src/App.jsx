@@ -10,11 +10,20 @@ function App() {
     phone: "+1234-5678910",
   };
 
-  const educationDefault = {
-    school: "University of Deer",
-    title: "Bachelor of Science in Deer Study",
-    date: "July 2024",
-  };
+  const educationDefault = [
+    {
+      id: 0,
+      school: "University of Deer",
+      title: "Bachelor of Science in Deer Study",
+      date: "2024-07-08",
+    },
+    {
+      id: 1,
+      school: "University of Bear",
+      title: "Bachelor of Science in Bear Study",
+      date: "2020-09-20",
+    },
+  ];
 
   const [generalInfo, setGeneralInfo] = useState(generalInfoDefault);
   const [education, setEducation] = useState(educationDefault);
@@ -24,9 +33,11 @@ function App() {
     setGeneralInfo({ ...generalInfo, [target.id]: target.value });
   }
 
-  function handleEducationChange(e) {
-    const target = e.target;
-    setEducation({ ...education, [target.id]: target.value });
+  function handleEducationChange(itemNew) {
+    let educationNew = [...education];
+    const index = educationNew.findIndex((item) => item.id === itemNew.id);
+    educationNew[index] = itemNew;
+    setEducation(educationNew);
   }
 
   return (
