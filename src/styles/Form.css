@@ -6,15 +6,23 @@
   input {
     @apply w-full bg-slate-200 rounded-md indent-2 !leading-[2];
   }
+
+  input[type="date"] {
+    @apply indent-1 pr-2;
+  }
 }
 
 @layer components {
-  .form {
+  .form-section {
     @apply w-full p-5 border rounded-md flex flex-col gap-5;
   }
 
   .form-title {
     @apply text-xl;
+  }
+
+  .form {
+    @apply flex flex-col gap-3;
   }
 
   .input-section {

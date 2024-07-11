@@ -2,7 +2,7 @@ import "../styles/Form.css";
 
 function FormGeneralInfo({ generalInfo, onChange }) {
   return (
-    <form action="#" className="flex flex-col gap-3">
+    <form action="#" className="form">
       <div className="input-section">
         <label htmlFor="name">Name</label>
         <input id="name" value={generalInfo.name} onChange={onChange} />

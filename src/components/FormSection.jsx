@@ -1,12 +1,13 @@
 import { useState } from "react";
 import FormGeneralInfo from "./FormGeneralInfo";
+import FormEducation from "./FormEducation";
 import "../styles/Form.css";
 
 function FormSection({ title, data, onChange }) {
   const [isOpen, setIsOpen] = useState(0);
 
   return (
-    <div className="form">
+    <div className="form-section">
       <button
         className="flex justify-between"
         onClick={() => {
@@ -18,6 +19,9 @@ function FormSection({ title, data, onChange }) {
       </button>
       {isOpen === 1 && title === "General Information" && (
         <FormGeneralInfo generalInfo={data} onChange={onChange} />
+      )}
+      {isOpen === 1 && title === "Education" && (
+        <FormEducation education={data} onChange={onChange} />
       )}
     </div>
   );
