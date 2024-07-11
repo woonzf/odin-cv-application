@@ -10,11 +10,11 @@
 
 @layer components {
   .form {
-    @apply w-full p-5 border rounded-md;
+    @apply w-full p-5 border rounded-md flex flex-col gap-5;
   }
 
   .form-title {
-    @apply mb-5 text-xl;
+    @apply text-xl;
   }
 
   .input-section {

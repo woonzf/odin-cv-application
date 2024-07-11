@@ -1,5 +1,5 @@
 import { useState } from "react";
-import FormGeneralInformation from "./components/FormGeneralInfo";
+import FormSection from "./components/FormSection";
 import Resume from "./components/Resume";
 import "./App.css";
 
@@ -9,6 +9,7 @@ function App() {
     email: "johndoe@who.com",
     phone: "+1234-5678910",
   };
+
   const [generalInfo, setGeneralInfo] = useState(generalInfoDefault);
 
   function handleGeneralInfoChange(e) {
@@ -20,8 +21,9 @@ function App() {
     <>
       <aside className="w-[40%] flex flex-col gap-5 print:hidden">
         <div className="text-2xl">CV Application</div>
-        <FormGeneralInformation
-          generalInfo={generalInfo}
+        <FormSection
+          title="General Information"
+          data={generalInfo}
           onChange={handleGeneralInfoChange}
         />
       </aside>
