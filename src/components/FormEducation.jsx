@@ -2,6 +2,17 @@ import { useState } from "react";
 import "../styles/Form.css";
 
 function FormEducation({ education, onChange }) {
+  function handleItemAdd() {
+    const currentIdNew = education[education.length - 1].id + 1;
+    const educationItemNew = {
+      id: currentIdNew,
+      school: "University",
+      title: "Title",
+      date: "",
+    };
+    onChange(educationItemNew, "add");
+  }
+
   function FormEducationItems({ item, onChange }) {
     const [isOpen, setIsOpen] = useState(0);
     const [itemCopy, setItemCopy] = useState(item);
@@ -17,14 +28,20 @@ function FormEducation({ education, onChange }) {
       setItemCopy(itemNew);
     }
 
-    function handleUndo(e) {
+    function handleItemDelete(e) {
+      e.preventDefault();
+      onChange(itemCopy, "del");
+    }
+
+    function handleItemCancel(e) {
       e.preventDefault();
       setItemCopy(item);
+      setIsOpen(+!isOpen);
     }
 
     function handleItemUpdate(e) {
       e.preventDefault();
-      onChange(itemCopy);
+      onChange(itemCopy, "mod");
     }
 
     return (
@@ -65,19 +82,18 @@ function FormEducation({ education, onChange }) {
                 onChange={handleItemChange}
               />
             </div>
-            <div className="flex gap-1 self-end">
-              <button
-                className="px-2 py-1 border rounded-md"
-                onClick={handleUndo}
-              >
-                Undo
+            <div className="flex justify-between">
+              <button className="btn-form-delete" onClick={handleItemDelete}>
+                Delete
               </button>
-              <button
-                className="px-2 py-1 border rounded-md"
-                onClick={handleItemUpdate}
-              >
-                Save
-              </button>
+              <div className="flex gap-1">
+                <button className="btn-form" onClick={handleItemCancel}>
+                  Cancel
+                </button>
+                <button className="btn-form" onClick={handleItemUpdate}>
+                  Save
+                </button>
+              </div>
             </div>
           </form>
         )}
@@ -92,6 +108,9 @@ function FormEducation({ education, onChange }) {
           <FormEducationItems key={item.id} item={item} onChange={onChange} />
         );
       })}
+      <button className="btn-form" onClick={handleItemAdd}>
+        Add
+      </button>
     </>
   );
 }

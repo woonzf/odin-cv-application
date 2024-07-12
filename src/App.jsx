@@ -4,39 +4,50 @@ import Resume from "./components/Resume";
 import "./App.css";
 
 function App() {
-  const generalInfoDefault = {
-    name: "John Doe",
-    email: "johndoe@who.com",
-    phone: "+1234-5678910",
-  };
+  const [generalInfo, setGeneralInfo] = useState(getDefault().generalInfo);
+  const [education, setEducation] = useState(getDefault().education);
 
-  const educationDefault = [
-    {
-      id: 0,
-      school: "University of Deer",
-      title: "Bachelor of Science in Deer Study",
-      date: "2024-07-08",
-    },
-    {
-      id: 1,
-      school: "University of Bear",
-      title: "Bachelor of Science in Bear Study",
-      date: "2020-09-20",
-    },
-  ];
-
-  const [generalInfo, setGeneralInfo] = useState(generalInfoDefault);
-  const [education, setEducation] = useState(educationDefault);
+  function getDefault() {
+    return {
+      generalInfo: {
+        name: "John Doe",
+        email: "johndoe@who.com",
+        phone: "+1234-5678910",
+      },
+      education: [
+        {
+          id: 0,
+          school: "University of Deer",
+          title: "Bachelor of Science in Deer Study",
+          date: "2024-07-08",
+        },
+        {
+          id: 1,
+          school: "University of Bear",
+          title: "Bachelor of Science in Bear Study",
+          date: "2020-09-20",
+        },
+      ],
+    };
+  }
 
   function handleGeneralInfoChange(e) {
     const target = e.target;
     setGeneralInfo({ ...generalInfo, [target.id]: target.value });
   }
 
-  function handleEducationChange(itemNew) {
+  function handleEducationChange(itemNew, action) {
     let educationNew = [...education];
     const index = educationNew.findIndex((item) => item.id === itemNew.id);
-    educationNew[index] = itemNew;
+
+    if (action === "del") {
+      educationNew.splice(index, 1);
+    } else if (action === "mod") {
+      educationNew[index] = itemNew;
+    } else if (action === "add") {
+      educationNew.push(itemNew);
+    }
+
     setEducation(educationNew);
   }
 

@@ -13,16 +13,24 @@
 }
 
 @layer components {
+  .btn-expand {
+    @apply flex justify-between items-center;
+  }
+
+  .btn-form {
+    @apply px-2 py-1 border rounded-md hover:border-black;
+  }
+
+  .btn-form-delete {
+    @apply btn-form text-red-600 hover:border-red-600;
+  }
+
   .form-section {
     @apply w-full p-5 border rounded-md flex flex-col gap-5;
   }
 
   .form-title {
     @apply text-xl;
-  }
-
-  .btn-expand {
-    @apply flex justify-between items-center;
   }
 
   .expand {
