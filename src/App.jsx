@@ -1,5 +1,6 @@
 import { useState } from "react";
-import FormSection from "./components/FormSection";
+import FormGeneralInfo from "./components/FormGeneralInfo";
+import FormEducation from "./components/FormEducation";
 import Resume from "./components/Resume";
 import "./App.css";
 
@@ -54,12 +55,12 @@ function App() {
     <>
       <aside className="w-[40%] flex flex-col gap-5 print:hidden">
         <div className="text-2xl">CV Application</div>
-        <FormSection
+        <FormGeneralInfo
           title="General Information"
           data={generalInfo}
           onChange={handleGeneralInfoChange}
         />
-        <FormSection
+        <FormEducation
           title="Education"
           data={education}
           onChange={handleEducationChange}

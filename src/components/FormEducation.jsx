@@ -1,9 +1,15 @@
 import { useState } from "react";
 import "../styles/Form.css";
 
-function FormEducation({ education, onChange }) {
+function FormEducation({ title, data, onChange }) {
+  const [isOpen, setIsOpen] = useState(0);
+
+  function handleIsOpenChange() {
+    setIsOpen(+!isOpen);
+  }
+
   function handleItemAdd() {
-    const currentIdNew = education[education.length - 1].id + 1;
+    const currentIdNew = data[data.length - 1].id + 1;
     const educationItemNew = {
       id: currentIdNew,
       school: "University",
@@ -102,16 +108,28 @@ function FormEducation({ education, onChange }) {
   }
 
   return (
-    <>
-      {education.map((item) => {
-        return (
-          <FormEducationItems key={item.id} item={item} onChange={onChange} />
-        );
-      })}
-      <button className="btn-form" onClick={handleItemAdd}>
-        Add
+    <div className="form-section">
+      <button className="btn-expand" onClick={handleIsOpenChange}>
+        <div className="form-title">{title}</div>
+        <span className="expand">{isOpen === 0 ? "+" : "-"}</span>
       </button>
-    </>
+      {isOpen === 1 && (
+        <>
+          {data.map((item) => {
+            return (
+              <FormEducationItems
+                key={item.id}
+                item={item}
+                onChange={onChange}
+              />
+            );
+          })}
+          <button className="btn-form" onClick={handleItemAdd}>
+            Add
+          </button>
+        </>
+      )}
+    </div>
   );
 }
 
