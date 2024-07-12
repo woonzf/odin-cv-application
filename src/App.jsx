@@ -31,9 +31,8 @@ function App() {
     };
   }
 
-  function handleGeneralInfoChange(e) {
-    const target = e.target;
-    setGeneralInfo({ ...generalInfo, [target.id]: target.value });
+  function handleGeneralInfoChange(infoNew) {
+    setGeneralInfo(infoNew);
   }
 
   function handleEducationChange(itemNew, action) {
