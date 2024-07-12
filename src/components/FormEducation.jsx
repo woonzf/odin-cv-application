@@ -1,4 +1,5 @@
 import { useState } from "react";
+import FormTitle from "./FormTitle";
 import "../styles/Form.css";
 
 function FormEducation({ title, data, onChange }) {
@@ -109,10 +110,7 @@ function FormEducation({ title, data, onChange }) {
 
   return (
     <div className="form-section">
-      <button className="btn-expand" onClick={handleIsOpenChange}>
-        <div className="form-title">{title}</div>
-        <span className="expand">{isOpen === 0 ? "+" : "-"}</span>
-      </button>
+      <FormTitle onClick={handleIsOpenChange} title={title} isOpen={isOpen} />
       {isOpen === 1 && (
         <>
           {data.map((item) => {
