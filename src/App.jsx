@@ -1,7 +1,5 @@
 import { useState } from "react";
-import FormGeneralInfo from "./components/FormGeneralInfo";
-import FormEducation from "./components/FormEducation";
-import FormExperience from "./components/FormExperience";
+import FormSection from "./components/FormSection";
 import Resume from "./components/Resume";
 import "./App.css";
 
@@ -9,7 +7,6 @@ function App() {
   const [generalInfo, setGeneralInfo] = useState(getDefault().generalInfo);
   const [education, setEducation] = useState(getDefault().education);
   const [experience, setExperience] = useState(getDefault().experience);
-  const [activeSection, setActiveSection] = useState(0);
 
   function getDefault() {
     return {
@@ -80,37 +77,17 @@ function App() {
     setExperience(experienceNew);
   }
 
-  function handleActiveSectionChange(index) {
-    setActiveSection(index);
-  }
-
   return (
     <>
       <aside className="w-[40%] flex flex-col gap-5 print:hidden">
         <div className="text-2xl">CV Application</div>
-        <FormGeneralInfo
-          title="General Information"
-          data={generalInfo}
-          onChange={handleGeneralInfoChange}
-          section={1}
-          activeSection={activeSection}
-          onOpen={handleActiveSectionChange}
-        />
-        <FormEducation
-          title="Education"
-          data={education}
-          onChange={handleEducationChange}
-          section={2}
-          activeSection={activeSection}
-          onOpen={handleActiveSectionChange}
-        />
-        <FormExperience
-          title="Experience"
-          data={experience}
-          onChange={handleExperienceChange}
-          section={3}
-          activeSection={activeSection}
-          onOpen={handleActiveSectionChange}
+        <FormSection
+          generalInfo={generalInfo}
+          education={education}
+          experience={experience}
+          onGeneralInfoChange={handleGeneralInfoChange}
+          onEducationChange={handleEducationChange}
+          onExperienceChange={handleExperienceChange}
         />
       </aside>
       <main className="w-[60%] print:w-screen border print:border-none">

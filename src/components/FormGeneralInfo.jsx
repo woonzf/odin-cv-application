@@ -10,28 +10,55 @@ function FormGeneralInfo({
   activeSection,
   onOpen,
 }) {
-  const [info, setInfo] = useState(data);
-
   function handleIsOpenChange() {
     if (activeSection === section) onOpen(0);
     else onOpen(section);
   }
 
-  function handleInfoChange(e) {
-    const target = e.target;
-    setInfo({ ...info, [target.id]: target.value });
-  }
+  function Form({ data, onChange, onOpenChange }) {
+    const [info, setInfo] = useState(data);
 
-  function handleInfoCancel(e) {
-    e.preventDefault();
-    setInfo(data);
-    handleIsOpenChange();
-  }
+    function handleInfoChange(e) {
+      const target = e.target;
+      setInfo({ ...info, [target.id]: target.value });
+    }
 
-  function handleInfoUpdate(e) {
-    e.preventDefault();
-    onChange(info);
-    handleIsOpenChange();
+    function handleInfoCancel(e) {
+      e.preventDefault();
+      setInfo(data);
+      onOpenChange();
+    }
+
+    function handleInfoUpdate(e) {
+      e.preventDefault();
+      onChange(info);
+      onOpenChange();
+    }
+
+    return (
+      <form action="#" className="form pt-0">
+        <div className="input-section">
+          <label htmlFor="name">Name</label>
+          <input id="name" value={info.name} onChange={handleInfoChange} />
+        </div>
+        <div className="input-section">
+          <label htmlFor="email">Email</label>
+          <input id="email" value={info.email} onChange={handleInfoChange} />
+        </div>
+        <div className="input-section">
+          <label htmlFor="phone">Phone Number</label>
+          <input id="phone" value={info.phone} onChange={handleInfoChange} />
+        </div>
+        <div className="flex justify-end gap-1">
+          <button className="btn-form" onClick={handleInfoCancel}>
+            Cancel
+          </button>
+          <button className="btn-form" onClick={handleInfoUpdate}>
+            Save
+          </button>
+        </div>
+      </form>
+    );
   }
 
   return (
@@ -43,28 +70,11 @@ function FormGeneralInfo({
         section={section}
       />
       {activeSection === section && (
-        <form action="#" className="form pt-0">
-          <div className="input-section">
-            <label htmlFor="name">Name</label>
-            <input id="name" value={info.name} onChange={handleInfoChange} />
-          </div>
-          <div className="input-section">
-            <label htmlFor="email">Email</label>
-            <input id="email" value={info.email} onChange={handleInfoChange} />
-          </div>
-          <div className="input-section">
-            <label htmlFor="phone">Phone Number</label>
-            <input id="phone" value={info.phone} onChange={handleInfoChange} />
-          </div>
-          <div className="flex justify-end gap-1">
-            <button className="btn-form" onClick={handleInfoCancel}>
-              Cancel
-            </button>
-            <button className="btn-form" onClick={handleInfoUpdate}>
-              Save
-            </button>
-          </div>
-        </form>
+        <Form
+          data={data}
+          onChange={onChange}
+          onOpenChange={handleIsOpenChange}
+        />
       )}
     </section>
   );
