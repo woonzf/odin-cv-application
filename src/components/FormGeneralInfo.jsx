@@ -15,43 +15,35 @@ function FormGeneralInfo({ title, data, onChange }) {
     setInfo({ ...info, [target.id]: target.value });
   }
 
-  function handleInfoCancel() {
+  function handleInfoCancel(e) {
+    e.preventDefault();
     setInfo(data);
     handleIsOpenChange();
   }
 
-  function handleInfoUpdate() {
+  function handleInfoUpdate(e) {
+    e.preventDefault();
     onChange(info);
     handleIsOpenChange();
   }
 
   return (
-    <div className="form-section">
+    <section className="form-section">
       <FormTitle onClick={handleIsOpenChange} title={title} isOpen={isOpen} />
       {isOpen === 1 && (
-        <>
-          <form action="#" className="form">
-            <div className="input-section">
-              <label htmlFor="name">Name</label>
-              <input id="name" value={info.name} onChange={handleInfoChange} />
-            </div>
-            <div className="input-section">
-              <label htmlFor="email">Email</label>
-              <input
-                id="email"
-                value={info.email}
-                onChange={handleInfoChange}
-              />
-            </div>
-            <div className="input-section">
-              <label htmlFor="phone">Phone Number</label>
-              <input
-                id="phone"
-                value={info.phone}
-                onChange={handleInfoChange}
-              />
-            </div>
-          </form>
+        <form action="#" className="form pt-0">
+          <div className="input-section">
+            <label htmlFor="name">Name</label>
+            <input id="name" value={info.name} onChange={handleInfoChange} />
+          </div>
+          <div className="input-section">
+            <label htmlFor="email">Email</label>
+            <input id="email" value={info.email} onChange={handleInfoChange} />
+          </div>
+          <div className="input-section">
+            <label htmlFor="phone">Phone Number</label>
+            <input id="phone" value={info.phone} onChange={handleInfoChange} />
+          </div>
           <div className="flex justify-end gap-1">
             <button className="btn-form" onClick={handleInfoCancel}>
               Cancel
@@ -60,9 +52,9 @@ function FormGeneralInfo({ title, data, onChange }) {
               Save
             </button>
           </div>
-        </>
+        </form>
       )}
-    </div>
+    </section>
   );
 }
 

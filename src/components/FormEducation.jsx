@@ -13,7 +13,7 @@ function FormEducation({ title, data, onChange }) {
     const currentIdNew = data[data.length - 1].id + 1;
     const educationItemNew = {
       id: currentIdNew,
-      school: "University",
+      school: "School",
       title: "Title",
       date: "",
     };
@@ -54,7 +54,7 @@ function FormEducation({ title, data, onChange }) {
     return (
       <div className="form-section">
         {isOpen === 0 && (
-          <button className="btn-expand" onClick={handleIsOpenChange}>
+          <button className="btn-expand py-3" onClick={handleIsOpenChange}>
             <div className="text-start">
               <div>{item.school}</div>
               <small>{item.title}</small>
@@ -109,10 +109,10 @@ function FormEducation({ title, data, onChange }) {
   }
 
   return (
-    <div className="form-section">
+    <section className="form-section">
       <FormTitle onClick={handleIsOpenChange} title={title} isOpen={isOpen} />
       {isOpen === 1 && (
-        <>
+        <div className="form pt-0">
           {data.map((item) => {
             return (
               <FormEducationItems
@@ -125,9 +125,9 @@ function FormEducation({ title, data, onChange }) {
           <button className="btn-form" onClick={handleItemAdd}>
             Add
           </button>
-        </>
+        </div>
       )}
-    </div>
+    </section>
   );
 }
 
