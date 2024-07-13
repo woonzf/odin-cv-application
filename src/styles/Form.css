@@ -3,12 +3,9 @@
 @tailwind utilities;
 
 @layer base {
-  input {
-    @apply w-full bg-slate-200 rounded-md indent-3 !leading-[3];
-  }
-
-  input[type="date"] {
-    @apply indent-2 pr-4;
+  input,
+  select {
+    @apply h-10 w-full bg-slate-200 rounded-md indent-3;
   }
 }
 

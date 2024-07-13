@@ -29,6 +29,48 @@ function FormEducation({
     onChange(educationItemNew, "add");
   }
 
+  function OptionMonth() {
+    const months = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+    return (
+      <>
+        {months.map((month) => (
+          <option key={month}>{month}</option>
+        ))}
+      </>
+    );
+  }
+
+  function OptionYear() {
+    const yearStart = 1950;
+    const yearEnd = new Date().getFullYear();
+
+    let years = [];
+    for (let i = yearEnd; i >= yearStart; i--) {
+      years.push(i);
+    }
+
+    return (
+      <>
+        {years.map((year) => (
+          <option key={year}>{year}</option>
+        ))}
+      </>
+    );
+  }
+
   function FormEducationItems({ item, onChange }) {
     const [isOpen, setIsOpen] = useState(0);
     const [itemCopy, setItemCopy] = useState(item);
@@ -90,13 +132,29 @@ function FormEducation({
               />
             </div>
             <div className="input-section">
-              <label htmlFor="date">Graduation Date</label>
-              <input
-                type="date"
-                id="date"
-                value={itemCopy.date}
-                onChange={handleItemChange}
-              />
+              <div>Graduation Date</div>
+              <div className="flex gap-2">
+                <div className="w-full flex flex-col">
+                  <label htmlFor="month">Month</label>
+                  <select
+                    id="month"
+                    value={itemCopy.month}
+                    onChange={handleItemChange}
+                  >
+                    <OptionMonth />
+                  </select>
+                </div>
+                <div className="w-full flex flex-col">
+                  <label htmlFor="year">Year</label>
+                  <select
+                    id="year"
+                    value={itemCopy.year}
+                    onChange={handleItemChange}
+                  >
+                    <OptionYear />
+                  </select>
+                </div>
+              </div>
             </div>
             <div className="flex justify-between">
               <button className="btn-form-delete" onClick={handleItemDelete}>

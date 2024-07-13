@@ -18,7 +18,9 @@ function Resume({ generalInfo, education, experience }) {
               <div className="text-lg font-bold">{item.school}</div>
               <div className="flex justify-between">
                 <div>{item.title}</div>
-                <div>{item.date}</div>
+                <div>
+                  {item.month} {item.year}
+                </div>
               </div>
             </div>
           );

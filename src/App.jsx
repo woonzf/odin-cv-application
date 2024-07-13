@@ -20,13 +20,15 @@ function App() {
           id: 0,
           school: "University of Deer",
           title: "Bachelor of Science in Deer Study",
-          date: "2024-07-08",
+          month: "June",
+          year: "2024",
         },
         {
           id: 1,
           school: "University of Bear",
           title: "Bachelor of Science in Bear Study",
-          date: "2020-09-20",
+          month: "September",
+          year: "2020",
         },
       ],
       experience: [
@@ -36,8 +38,8 @@ function App() {
           position: "Lead Analyst of Animal Behaviour",
           responsibility:
             "Analyse animal behaviour and interaction between other species",
-          dateStart: "2024-07-08",
-          dateEnd: "present",
+          dateStart: "July 2024",
+          dateEnd: "Present",
         },
       ],
     };
