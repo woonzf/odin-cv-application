@@ -1,12 +1,14 @@
 import { useState } from "react";
 import FormGeneralInfo from "./components/FormGeneralInfo";
 import FormEducation from "./components/FormEducation";
+import FormExperience from "./components/FormExperience";
 import Resume from "./components/Resume";
 import "./App.css";
 
 function App() {
   const [generalInfo, setGeneralInfo] = useState(getDefault().generalInfo);
   const [education, setEducation] = useState(getDefault().education);
+  const [experience, setExperience] = useState(getDefault().experience);
   const [activeSection, setActiveSection] = useState(0);
 
   function getDefault() {
@@ -30,6 +32,17 @@ function App() {
           date: "2020-09-20",
         },
       ],
+      experience: [
+        {
+          id: 0,
+          company: "Jurassic Park",
+          position: "Lead Analyst of Animal Behaviour",
+          responsibility:
+            "Analyse animal behaviour and interaction between other species",
+          dateStart: "2024-07-08",
+          dateEnd: "present",
+        },
+      ],
     };
   }
 
@@ -50,6 +63,21 @@ function App() {
     }
 
     setEducation(educationNew);
+  }
+
+  function handleExperienceChange(itemNew, action) {
+    let experienceNew = [...experience];
+    const index = experienceNew.findIndex((item) => item.id === itemNew.id);
+
+    if (action === "del") {
+      experienceNew.splice(index, 1);
+    } else if (action === "mod") {
+      experienceNew[index] = itemNew;
+    } else if (action === "add") {
+      experienceNew.push(itemNew);
+    }
+
+    setExperience(experienceNew);
   }
 
   function handleActiveSectionChange(index) {
@@ -76,9 +104,21 @@ function App() {
           activeSection={activeSection}
           onOpen={handleActiveSectionChange}
         />
+        <FormExperience
+          title="Experience"
+          data={experience}
+          onChange={handleExperienceChange}
+          section={3}
+          activeSection={activeSection}
+          onOpen={handleActiveSectionChange}
+        />
       </aside>
       <main className="w-[60%] print:w-screen border print:border-none">
-        <Resume generalInfo={generalInfo} education={education} />
+        <Resume
+          generalInfo={generalInfo}
+          education={education}
+          experience={experience}
+        />
       </main>
     </>
   );

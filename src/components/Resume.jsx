@@ -1,4 +1,4 @@
-function Resume({ generalInfo, education }) {
+function Resume({ generalInfo, education, experience }) {
   return (
     // A4 ratio = 1.41
     <div className="w-full aspect-[0.709] flex flex-col gap-5">
@@ -20,6 +20,24 @@ function Resume({ generalInfo, education }) {
                 <div>{item.title}</div>
                 <div>{item.date}</div>
               </div>
+            </div>
+          );
+        })}
+      </div>
+      <div className="w-full px-7 flex flex-col gap-2">
+        <div className="text-xl">Experience</div>
+        <div className="h-1 w-full border-b"></div>
+        {experience.map((item) => {
+          return (
+            <div key={item.id}>
+              <div className="text-lg font-bold">{item.company}</div>
+              <div className="flex justify-between">
+                <div>{item.position}</div>
+                <div>
+                  {item.dateStart} ~ {item.dateEnd}
+                </div>
+              </div>
+              <small>{item.responsibility}</small>
             </div>
           );
         })}
