@@ -2,11 +2,17 @@ import { useState } from "react";
 import FormTitle from "./FormTitle";
 import "../styles/Form.css";
 
-function FormEducation({ title, data, onChange }) {
-  const [isOpen, setIsOpen] = useState(0);
-
+function FormEducation({
+  title,
+  data,
+  onChange,
+  section,
+  activeSection,
+  onOpen,
+}) {
   function handleIsOpenChange() {
-    setIsOpen(+!isOpen);
+    if (activeSection === section) onOpen(0);
+    else onOpen(section);
   }
 
   function handleItemAdd() {
@@ -110,8 +116,13 @@ function FormEducation({ title, data, onChange }) {
 
   return (
     <section className="form-section">
-      <FormTitle onClick={handleIsOpenChange} title={title} isOpen={isOpen} />
-      {isOpen === 1 && (
+      <FormTitle
+        onClick={handleIsOpenChange}
+        title={title}
+        activeSection={activeSection}
+        section={section}
+      />
+      {activeSection === section && (
         <div className="form pt-0">
           {data.map((item) => {
             return (

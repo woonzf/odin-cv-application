@@ -7,6 +7,7 @@ import "./App.css";
 function App() {
   const [generalInfo, setGeneralInfo] = useState(getDefault().generalInfo);
   const [education, setEducation] = useState(getDefault().education);
+  const [activeSection, setActiveSection] = useState(0);
 
   function getDefault() {
     return {
@@ -51,6 +52,10 @@ function App() {
     setEducation(educationNew);
   }
 
+  function handleActiveSectionChange(index) {
+    setActiveSection(index);
+  }
+
   return (
     <>
       <aside className="w-[40%] flex flex-col gap-5 print:hidden">
@@ -59,11 +64,17 @@ function App() {
           title="General Information"
           data={generalInfo}
           onChange={handleGeneralInfoChange}
+          section={1}
+          activeSection={activeSection}
+          onOpen={handleActiveSectionChange}
         />
         <FormEducation
           title="Education"
           data={education}
           onChange={handleEducationChange}
+          section={2}
+          activeSection={activeSection}
+          onOpen={handleActiveSectionChange}
         />
       </aside>
       <main className="w-[60%] print:w-screen border print:border-none">

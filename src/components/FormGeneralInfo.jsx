@@ -2,12 +2,19 @@ import { useState } from "react";
 import FormTitle from "./FormTitle";
 import "../styles/Form.css";
 
-function FormGeneralInfo({ title, data, onChange }) {
-  const [isOpen, setIsOpen] = useState(0);
+function FormGeneralInfo({
+  title,
+  data,
+  onChange,
+  section,
+  activeSection,
+  onOpen,
+}) {
   const [info, setInfo] = useState(data);
 
   function handleIsOpenChange() {
-    setIsOpen(+!isOpen);
+    if (activeSection === section) onOpen(0);
+    else onOpen(section);
   }
 
   function handleInfoChange(e) {
@@ -29,8 +36,13 @@ function FormGeneralInfo({ title, data, onChange }) {
 
   return (
     <section className="form-section">
-      <FormTitle onClick={handleIsOpenChange} title={title} isOpen={isOpen} />
-      {isOpen === 1 && (
+      <FormTitle
+        onClick={handleIsOpenChange}
+        title={title}
+        activeSection={activeSection}
+        section={section}
+      />
+      {activeSection === section && (
         <form action="#" className="form pt-0">
           <div className="input-section">
             <label htmlFor="name">Name</label>
