@@ -16,13 +16,16 @@ function FormEducation({
   }
 
   function handleItemAdd() {
-    const currentIdNew = data[data.length - 1].id + 1;
+    let currentIdNew = 0;
+    if (data.length !== 0) currentIdNew = data[data.length - 1].id + 1;
+
     const educationItemNew = {
       id: currentIdNew,
       school: "School",
       title: "Title",
       date: "",
     };
+
     onChange(educationItemNew, "add");
   }
 
