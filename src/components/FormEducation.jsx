@@ -1,5 +1,6 @@
 import { useState } from "react";
 import FormTitle from "./FormTitle";
+import SelectSection from "./SelectSection";
 import "../styles/Form.css";
 
 function FormEducation({
@@ -27,48 +28,6 @@ function FormEducation({
     };
 
     onChange(educationItemNew, "add");
-  }
-
-  function OptionMonth() {
-    const months = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December",
-    ];
-    return (
-      <>
-        {months.map((month) => (
-          <option key={month}>{month}</option>
-        ))}
-      </>
-    );
-  }
-
-  function OptionYear() {
-    const yearStart = 1950;
-    const yearEnd = new Date().getFullYear();
-
-    let years = [];
-    for (let i = yearEnd; i >= yearStart; i--) {
-      years.push(i);
-    }
-
-    return (
-      <>
-        {years.map((year) => (
-          <option key={year}>{year}</option>
-        ))}
-      </>
-    );
   }
 
   function FormEducationItems({ item, onChange }) {
@@ -134,26 +93,16 @@ function FormEducation({
             <div className="input-section">
               <div>Graduation Date</div>
               <div className="flex gap-2">
-                <div className="w-full flex flex-col">
-                  <label htmlFor="month">Month</label>
-                  <select
-                    id="month"
-                    value={itemCopy.month}
-                    onChange={handleItemChange}
-                  >
-                    <OptionMonth />
-                  </select>
-                </div>
-                <div className="w-full flex flex-col">
-                  <label htmlFor="year">Year</label>
-                  <select
-                    id="year"
-                    value={itemCopy.year}
-                    onChange={handleItemChange}
-                  >
-                    <OptionYear />
-                  </select>
-                </div>
+                <SelectSection
+                  type="month"
+                  item={itemCopy}
+                  onChange={handleItemChange}
+                />
+                <SelectSection
+                  type="year"
+                  item={itemCopy}
+                  onChange={handleItemChange}
+                />
               </div>
             </div>
             <div className="flex justify-between">
