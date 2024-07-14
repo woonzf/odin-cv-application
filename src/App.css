@@ -4,12 +4,12 @@
 
 @layer base {
   body {
-    @apply flex justify-center;
+    @apply h-screen p-5 flex justify-center;
   }
 }
 
 @layer utilities {
   #root {
-    @apply w-full max-w-screen-lg mt-5 flex gap-5;
+    @apply w-full max-w-screen-lg flex gap-5;
   }
 }

@@ -1,7 +1,7 @@
 function Resume({ generalInfo, education, experience }) {
   return (
     // A4 ratio = 1.41
-    <div className="w-full aspect-[0.709] flex flex-col gap-5">
+    <div className="w-full aspect-[0.709] flex flex-col gap-6">
       <div className="py-10 bg-sky-600 text-white flex flex-col justify-center items-center gap-3">
         <div className="text-xl font-bold">{generalInfo.name}</div>
         <div className="flex gap-10">
@@ -9,7 +9,7 @@ function Resume({ generalInfo, education, experience }) {
           <div>{generalInfo.phone}</div>
         </div>
       </div>
-      <div className="w-full px-7 flex flex-col gap-2">
+      <div className="w-full px-7 flex flex-col gap-3">
         <div className="text-xl">Education</div>
         <div className="h-1 w-full border-b"></div>
         {education.map((item) => {
@@ -26,7 +26,7 @@ function Resume({ generalInfo, education, experience }) {
           );
         })}
       </div>
-      <div className="w-full px-7 flex flex-col gap-2">
+      <div className="w-full px-7 flex flex-col gap-3">
         <div className="text-xl">Experience</div>
         <div className="h-1 w-full border-b"></div>
         {experience.map((item) => {
