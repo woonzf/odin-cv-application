@@ -5,7 +5,15 @@
 @layer base {
   input:not([type="checkbox"]),
   select {
-    @apply h-10 w-full bg-slate-200 rounded-md indent-3;
+    @apply h-10 w-full bg-slate-200 rounded-md;
+  }
+
+  input:not([type="checkbox"]) {
+    @apply px-3;
+  }
+
+  select {
+    @apply outline-none;
   }
 }
 
@@ -40,6 +48,10 @@
 
   .disabled {
     @apply opacity-50;
+  }
+
+  .select-wrapper {
+    @apply w-full px-2 bg-slate-200 rounded-md;
   }
 
   .btn-form {

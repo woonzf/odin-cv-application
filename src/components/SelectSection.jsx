@@ -63,14 +63,16 @@ function SelectSection({ type, item, onChange, disabled }) {
           <label htmlFor={type}>
             <small>Month</small>
           </label>
-          <select
-            id={type}
-            value={getValue()}
-            onChange={onChange}
-            disabled={disabled}
-          >
-            <OptionMonth />
-          </select>
+          <div className="select-wrapper">
+            <select
+              id={type}
+              value={getValue()}
+              onChange={onChange}
+              disabled={disabled}
+            >
+              <OptionMonth />
+            </select>
+          </div>
         </>
       )}
       {type.includes("year") && (
@@ -78,14 +80,16 @@ function SelectSection({ type, item, onChange, disabled }) {
           <label htmlFor={type}>
             <small>Year</small>
           </label>
-          <select
-            id={type}
-            value={getValue()}
-            onChange={onChange}
-            disabled={disabled}
-          >
-            <OptionYear />
-          </select>
+          <div className="select-wrapper">
+            <select
+              id={type}
+              value={getValue()}
+              onChange={onChange}
+              disabled={disabled}
+            >
+              <OptionYear />
+            </select>
+          </div>
         </>
       )}
     </div>
