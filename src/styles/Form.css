@@ -4,22 +4,33 @@
 
 @layer base {
   input:not([type="checkbox"]),
+  select,
+  textarea {
+    @apply w-full bg-slate-200 rounded-md;
+  }
+
+  input:not([type="checkbox"]),
   select {
-    @apply h-10 w-full bg-slate-200 rounded-md;
+    @apply h-10;
   }
 
   input:not([type="checkbox"]) {
     @apply px-3;
   }
 
-  select {
+  select,
+  textarea {
     @apply outline-none;
   }
 }
 
 @layer components {
+  .form-section {
+    @apply w-full border border-neutral-400 rounded-md flex flex-col;
+  }
+
   .btn-expand {
-    @apply p-5 flex justify-between items-center;
+    @apply p-5 flex justify-between items-center hover:font-bold;
   }
 
   .form-title {
@@ -28,10 +39,6 @@
 
   .expand {
     @apply h-7 aspect-square;
-  }
-
-  .form-section {
-    @apply w-full border rounded-md flex flex-col;
   }
 
   .form {
@@ -50,12 +57,26 @@
     @apply opacity-50;
   }
 
+  .select-wrapper,
+  .textarea-wrapper {
+    @apply w-full bg-slate-200 rounded-md;
+  }
+
   .select-wrapper {
-    @apply w-full px-2 bg-slate-200 rounded-md;
+    @apply px-2;
+  }
+
+  .textarea-wrapper {
+    @apply px-3 py-2;
+  }
+
+  .select-wrapper:focus-within,
+  .textarea-wrapper:focus-within {
+    @apply outline outline-2;
   }
 
   .btn-form {
-    @apply px-2 py-1 border rounded-md hover:border-black;
+    @apply px-2 py-1 border border-neutral-400 rounded-md hover:border-black;
   }
 
   .btn-form-delete {

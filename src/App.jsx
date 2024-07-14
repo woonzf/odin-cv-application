@@ -86,7 +86,10 @@ function App() {
     <>
       <aside className="max-h-screen w-[40%] flex flex-col print:hidden">
         <div className="text-2xl font-bold">CV Application</div>
-        <div className="mt-5 flex flex-col gap-5 overflow-auto">
+        <div
+          className="mt-5 flex flex-col gap-5 overflow-auto"
+          id="form-section"
+        >
           <FormSection
             generalInfo={generalInfo}
             education={education}
@@ -97,7 +100,7 @@ function App() {
           />
         </div>
       </aside>
-      <main className="w-[60%] print:w-screen border print:border-none">
+      <main className="w-[60%] print:w-screen">
         <Resume
           generalInfo={generalInfo}
           education={education}

@@ -105,11 +105,14 @@ function FormExperience({
             </div>
             <div className="input-section">
               <label htmlFor="responsibility">Responsibility</label>
-              <input
-                id="responsibility"
-                value={itemCopy.responsibility}
-                onChange={handleItemChange}
-              />
+              <div className="textarea-wrapper">
+                <textarea
+                  rows={5}
+                  id="responsibility"
+                  value={itemCopy.responsibility}
+                  onChange={handleItemChange}
+                ></textarea>
+              </div>
             </div>
             <div className="input-section">
               <div>Start Date</div>

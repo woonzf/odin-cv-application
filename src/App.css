@@ -12,4 +12,8 @@
   #root {
     @apply w-full max-w-screen-lg flex gap-5;
   }
+
+  #form-section {
+    scrollbar-gutter: stable;
+  }
 }
