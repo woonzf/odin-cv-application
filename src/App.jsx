@@ -38,8 +38,11 @@ function App() {
           position: "Lead Analyst of Animal Behaviour",
           responsibility:
             "Analyse animal behaviour and interaction between other species",
-          dateStart: "July 2024",
-          dateEnd: "Present",
+          monthStart: "July",
+          yearStart: "2024",
+          monthEnd: "",
+          yearEnd: "",
+          present: 1,
         },
       ],
     };

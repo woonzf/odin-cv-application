@@ -1,5 +1,6 @@
 import { useState } from "react";
 import FormTitle from "./FormTitle";
+import SelectSection from "./SelectSection";
 import "../styles/Form.css";
 
 function FormExperience({
@@ -24,8 +25,11 @@ function FormExperience({
       company: "Company",
       position: "Position",
       responsibility: "Responsibility",
-      dateStart: "Start Date",
-      dateEnd: "End Date",
+      monthStart: "",
+      yearStart: "",
+      monthEnd: "",
+      yearEnd: "",
+      present: 0,
     };
 
     onChange(educationItemNew, "add");
@@ -42,7 +46,15 @@ function FormExperience({
 
     function handleItemChange(e) {
       const target = e.target;
-      const itemNew = { ...itemCopy, [target.id]: target.value };
+      let itemNew = null;
+      if (target.id === "present")
+        itemNew = {
+          ...itemCopy,
+          ["monthEnd"]: "",
+          ["yearEnd"]: "",
+          [target.id]: +target.checked,
+        };
+      else itemNew = { ...itemCopy, [target.id]: target.value };
       setItemCopy(itemNew);
     }
 
@@ -100,22 +112,53 @@ function FormExperience({
               />
             </div>
             <div className="input-section">
-              <label htmlFor="dateStart">Start Date</label>
-              <input
-                type="date"
-                id="dateStart"
-                value={itemCopy.dateStart}
-                onChange={handleItemChange}
-              />
+              <div>Start Date</div>
+              <div className="select-my">
+                <SelectSection
+                  type="monthStart"
+                  item={itemCopy}
+                  onChange={handleItemChange}
+                  disabled={0}
+                />
+                <SelectSection
+                  type="yearStart"
+                  item={itemCopy}
+                  onChange={handleItemChange}
+                  disabled={0}
+                />
+              </div>
             </div>
             <div className="input-section">
-              <label htmlFor="dateEnd">End Date</label>
-              <input
-                type="date"
-                id="dateEnd"
-                value={itemCopy.dateEnd}
-                onChange={handleItemChange}
-              />
+              <div className="flex justify-between">
+                <div>End Date</div>
+                <div>
+                  <input
+                    type="checkbox"
+                    id="present"
+                    onChange={handleItemChange}
+                    defaultChecked={itemCopy.present}
+                  />
+                  <label htmlFor="present"> Present</label>
+                </div>
+              </div>
+              <div
+                className={
+                  "select-my " + (itemCopy.present === 1 && "disabled")
+                }
+              >
+                <SelectSection
+                  type="monthEnd"
+                  item={itemCopy}
+                  onChange={handleItemChange}
+                  disabled={itemCopy.present}
+                />
+                <SelectSection
+                  type="yearEnd"
+                  item={itemCopy}
+                  onChange={handleItemChange}
+                  disabled={itemCopy.present}
+                />
+              </div>
             </div>
             <div className="flex justify-between">
               <button className="btn-form-delete" onClick={handleItemDelete}>

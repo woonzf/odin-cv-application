@@ -1,4 +1,16 @@
-function SelectSection({ type, item, onChange }) {
+function SelectSection({ type, item, onChange, disabled }) {
+  function getValue() {
+    if (type.includes("month")) {
+      if (type.includes("Start")) return item.monthStart;
+      else if (type.includes("End")) return item.monthEnd;
+      else return item.month;
+    } else if (type.includes("year")) {
+      if (type.includes("Start")) return item.yearStart;
+      else if (type.includes("End")) return item.yearEnd;
+      else return item.year;
+    }
+  }
+
   function OptionMonth() {
     const months = [
       "January",
@@ -14,8 +26,10 @@ function SelectSection({ type, item, onChange }) {
       "November",
       "December",
     ];
+
     return (
       <>
+        <option></option>
         {months.map((month) => (
           <option key={month}>{month}</option>
         ))}
@@ -34,6 +48,7 @@ function SelectSection({ type, item, onChange }) {
 
     return (
       <>
+        <option></option>
         {years.map((year) => (
           <option key={year}>{year}</option>
         ))}
@@ -43,18 +58,32 @@ function SelectSection({ type, item, onChange }) {
 
   return (
     <div className="w-full flex flex-col">
-      {type === "month" && (
+      {type.includes("month") && (
         <>
-          <label htmlFor="month">Month</label>
-          <select id="month" value={item.month} onChange={onChange}>
+          <label htmlFor={type}>
+            <small>Month</small>
+          </label>
+          <select
+            id={type}
+            value={getValue()}
+            onChange={onChange}
+            disabled={disabled}
+          >
             <OptionMonth />
           </select>
         </>
       )}
-      {type === "year" && (
+      {type.includes("year") && (
         <>
-          <label htmlFor="year">Year</label>
-          <select id="year" value={item.year} onChange={onChange}>
+          <label htmlFor={type}>
+            <small>Year</small>
+          </label>
+          <select
+            id={type}
+            value={getValue()}
+            onChange={onChange}
+            disabled={disabled}
+          >
             <OptionYear />
           </select>
         </>

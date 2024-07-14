@@ -92,16 +92,18 @@ function FormEducation({
             </div>
             <div className="input-section">
               <div>Graduation Date</div>
-              <div className="flex gap-2">
+              <div className="select-my">
                 <SelectSection
                   type="month"
                   item={itemCopy}
                   onChange={handleItemChange}
+                  disabled={0}
                 />
                 <SelectSection
                   type="year"
                   item={itemCopy}
                   onChange={handleItemChange}
+                  disabled={0}
                 />
               </div>
             </div>

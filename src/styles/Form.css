@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @layer base {
-  input,
+  input:not([type="checkbox"]),
   select {
     @apply h-10 w-full bg-slate-200 rounded-md indent-3;
   }
@@ -32,6 +32,14 @@
 
   .input-section {
     @apply flex flex-col gap-1;
+  }
+
+  .select-my {
+    @apply flex gap-2;
+  }
+
+  .disabled {
+    @apply opacity-50;
   }
 
   .btn-form {

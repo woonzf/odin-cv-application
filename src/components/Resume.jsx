@@ -36,7 +36,14 @@ function Resume({ generalInfo, education, experience }) {
               <div className="flex justify-between">
                 <div>{item.position}</div>
                 <div>
-                  {item.dateStart} ~ {item.dateEnd}
+                  {item.monthStart} {item.yearStart} ~{" "}
+                  {item.present === 1 ? (
+                    <>Present</>
+                  ) : (
+                    <>
+                      {item.monthEnd} {item.yearEnd}
+                    </>
+                  )}
                 </div>
               </div>
               <small>{item.responsibility}</small>
