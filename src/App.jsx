@@ -1,55 +1,18 @@
 import { useState } from "react";
+import * as data from "./components/data";
 import FormSection from "./components/FormSection";
 import Resume from "./components/Resume";
 import "./App.css";
 
 function App() {
-  const [generalInfo, setGeneralInfo] = useState(getDefault().generalInfo);
-  const [education, setEducation] = useState(getDefault().education);
-  const [experience, setExperience] = useState(getDefault().experience);
-
-  function getDefault() {
-    return {
-      generalInfo: {
-        name: "John Doe",
-        email: "johndoe@who.com",
-        phone: "+1234-5678910",
-      },
-      education: [
-        {
-          id: 0,
-          school: "University of Deer",
-          title: "Bachelor of Science in Deer Study",
-          month: "June",
-          year: "2024",
-        },
-        {
-          id: 1,
-          school: "University of Bear",
-          title: "Bachelor of Science in Bear Study",
-          month: "September",
-          year: "2020",
-        },
-      ],
-      experience: [
-        {
-          id: 0,
-          company: "Jurassic Park",
-          position: "Lead Analyst of Animal Behaviour",
-          responsibility:
-            "Analyse animal behaviour and interaction between other species",
-          monthStart: "July",
-          yearStart: "2024",
-          monthEnd: "",
-          yearEnd: "",
-          present: 1,
-        },
-      ],
-    };
-  }
+  const dataCopy = data.getData();
+  const [generalInfo, setGeneralInfo] = useState(dataCopy.generalInfo);
+  const [education, setEducation] = useState(dataCopy.education);
+  const [experience, setExperience] = useState(dataCopy.experience);
 
   function handleGeneralInfoChange(infoNew) {
     setGeneralInfo(infoNew);
+    data.setLocalStorageData({ ...dataCopy, ["generalInfo"]: infoNew });
   }
 
   function handleEducationChange(itemNew, action) {
@@ -65,6 +28,7 @@ function App() {
     }
 
     setEducation(educationNew);
+    data.setLocalStorageData({ ...dataCopy, ["education"]: educationNew });
   }
 
   function handleExperienceChange(itemNew, action) {
@@ -80,6 +44,7 @@ function App() {
     }
 
     setExperience(experienceNew);
+    data.setLocalStorageData({ ...dataCopy, ["experience"]: experienceNew });
   }
 
   return (
