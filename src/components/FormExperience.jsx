@@ -1,6 +1,7 @@
 import { useState } from "react";
 import FormTitle from "./FormTitle";
 import SelectSection from "./SelectSection";
+import ButtonForm from "./ButtonForm";
 import "../styles/Form.css";
 
 function FormExperience({
@@ -164,16 +165,14 @@ function FormExperience({
               </div>
             </div>
             <div className="flex justify-between">
-              <button className="btn-form-delete" onClick={handleItemDelete}>
-                Delete
-              </button>
+              <ButtonForm title="Delete" type={1} onClick={handleItemDelete} />
               <div className="flex gap-1">
-                <button className="btn-form" onClick={handleItemCancel}>
-                  Cancel
-                </button>
-                <button className="btn-form" onClick={handleItemUpdate}>
-                  Save
-                </button>
+                <ButtonForm
+                  title="Cancel"
+                  type={0}
+                  onClick={handleItemCancel}
+                />
+                <ButtonForm title="Save" type={0} onClick={handleItemUpdate} />
               </div>
             </div>
           </form>

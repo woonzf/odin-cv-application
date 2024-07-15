@@ -1,5 +1,6 @@
 import { useState } from "react";
 import FormTitle from "./FormTitle";
+import ButtonForm from "./ButtonForm";
 import "../styles/Form.css";
 
 function FormGeneralInfo({
@@ -50,12 +51,8 @@ function FormGeneralInfo({
           <input id="phone" value={info.phone} onChange={handleInfoChange} />
         </div>
         <div className="flex justify-end gap-1">
-          <button className="btn-form" onClick={handleInfoCancel}>
-            Cancel
-          </button>
-          <button className="btn-form" onClick={handleInfoUpdate}>
-            Save
-          </button>
+          <ButtonForm title="Cancel" type={0} onClick={handleInfoCancel} />
+          <ButtonForm title="Save" type={0} onClick={handleInfoUpdate} />
         </div>
       </form>
     );
