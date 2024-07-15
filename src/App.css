@@ -4,16 +4,12 @@
 
 @layer base {
   body {
-    @apply h-screen p-5 flex justify-center;
+    @apply landscape:max-h-screen portrait:w-screen p-5 flex justify-center;
   }
 }
 
 @layer utilities {
   #root {
-    @apply w-full max-w-screen-lg flex gap-5;
-  }
-
-  #form-section {
-    scrollbar-gutter: stable;
+    @apply w-full max-w-screen-lg flex flex-col md:flex-row gap-5;
   }
 }

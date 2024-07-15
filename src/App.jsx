@@ -60,7 +60,7 @@ function App() {
 
   return (
     <>
-      <aside className="max-h-screen w-[40%] flex flex-col print:hidden">
+      <aside className="md:w-[40%] flex flex-col print:hidden">
         <div className="flex justify-between">
           <div className="text-2xl font-bold">CV Application</div>
           <ButtonForm
@@ -83,12 +83,16 @@ function App() {
           />
         </div>
       </aside>
-      <main className="w-[60%] print:w-screen">
+      <main className="md:w-[60%] print:w-full">
         <Resume
           generalInfo={generalInfo}
           education={education}
           experience={experience}
         />
+        <div className="mt-2 text-center print:hidden">
+          <div>Size: A4</div>
+          <small>*Print preview should show the proper ratio</small>
+        </div>
       </main>
     </>
   );
