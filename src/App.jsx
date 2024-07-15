@@ -62,7 +62,10 @@ function App() {
     <>
       <aside className="md:w-[40%] flex flex-col print:hidden">
         <div className="flex justify-between">
-          <div className="text-2xl font-bold">CV Application</div>
+          <div className="flex items-center gap-1">
+            <img src="./document.png" />
+            <div className="text-xl font-bold">CV Application</div>
+          </div>
           <ButtonForm
             title="Load Default"
             type={1}

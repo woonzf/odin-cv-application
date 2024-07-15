@@ -33,3 +33,7 @@ The CV might look weird on some devices but print preview should show the proper
 ### Formatter:
 
 - Prettier
+
+### Resources:
+
+- [Document Icon](https://pictogrammers.com/library/mdi/)
