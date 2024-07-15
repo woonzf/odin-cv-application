@@ -47,3 +47,7 @@ export function setLocalStorageData(data) {
 export function getData() {
   return JSON.parse(localStorage.getItem("cvApp"));
 }
+
+export function loadDefaultData() {
+  setLocalStorageData(getDefaultData());
+}

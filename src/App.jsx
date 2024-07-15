@@ -1,5 +1,6 @@
 import { useState } from "react";
 import * as data from "./components/data";
+import ButtonForm from "./components/ButtonForm";
 import FormSection from "./components/FormSection";
 import Resume from "./components/Resume";
 import "./App.css";
@@ -9,6 +10,16 @@ function App() {
   const [generalInfo, setGeneralInfo] = useState(dataCopy.generalInfo);
   const [education, setEducation] = useState(dataCopy.education);
   const [experience, setExperience] = useState(dataCopy.experience);
+
+  function handleLoadDefault() {
+    if (confirm("Are you sure? This will remove your updated CV.")) {
+      data.loadDefaultData();
+      const dataDefault = data.getData();
+      setGeneralInfo(dataDefault.generalInfo);
+      setEducation(dataDefault.education);
+      setExperience(dataDefault.experience);
+    }
+  }
 
   function handleGeneralInfoChange(infoNew) {
     setGeneralInfo(infoNew);
@@ -50,7 +61,14 @@ function App() {
   return (
     <>
       <aside className="max-h-screen w-[40%] flex flex-col print:hidden">
-        <div className="text-2xl font-bold">CV Application</div>
+        <div className="flex justify-between">
+          <div className="text-2xl font-bold">CV Application</div>
+          <ButtonForm
+            title="Load Default"
+            type={1}
+            onClick={handleLoadDefault}
+          />
+        </div>
         <div
           className="mt-5 flex flex-col gap-5 overflow-auto"
           id="form-section"
